@@ -1,42 +1,59 @@
-<script setup lang="ts" name="App"></script>
+<script setup lang="ts" name="App">
+import { ref } from 'vue'
+import { RouterView, RouterLink } from 'vue-router';
+
+</script>
 
 <template>
-  <div class="sidebar">
-    <!-- 用户信息 -->
-    <div class="user-info">
-      <div class="avatar">
-        <img src="" alt="">
+  <div class="app">
+    <!-- 侧边导航栏 -->
+    <div class="sidebar">
+      <!-- 用户信息 -->
+      <div class="user-info">
+        <div class="avatar">
+          <img src="" alt="">
+        </div>
+        <div class="user-name">用户名</div>
+        <!-- <div v-show="login" class="user-login">请先登录</div> -->
       </div>
-      <div class="user-name">用户名</div>
-      <div class="user-login">请先登录</div>
+      <!-- 导航栏 -->
+      <nav>
+        <ul>
+          <li>
+            <div>
+              <img src="./assets/tubiao_shouye-.png" alt="">
+            </div>
+            <RouterLink to="home" class="item">首页</RouterLink>
+          </li>
+          <li>
+            <div>
+              <img src="./assets/zixun.png" alt="">
+            </div>
+            <span class="item">吐槽贴</span>
+          </li>
+          <li>
+            <div>
+              <img src="./assets/1shezhi-1.png" alt="">
+            </div>
+            <span class="item">设置</span>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <!-- 导航栏 -->
-    <nav>
-      <ul>
-        <li>
-          <div>
-            <img src="./assets/tubiao_shouye-.png" alt="">
-          </div>
-          <span class="item">首页</span>
-        </li>
-        <li>
-          <div>
-            <img src="./assets/zixun.png" alt="">
-          </div>
-          <span class="item">吐槽贴</span>
-        </li>
-        <li>
-          <div>
-            <img src="./assets/1shezhi-1.png" alt="">
-          </div>
-          <span class="item">设置</span>
-        </li>
-      </ul>
-    </nav>
+
+    <!-- 展示区 -->
+    <div class="content">
+      <RouterView></RouterView>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.app {
+  display: flex;
+  gap: 30px;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -66,7 +83,7 @@
 }
 
 .user-info .user-name,
-.user-info .user-login{
+.user-info .user-login {
   font-size: 20px;
 }
 
@@ -89,7 +106,7 @@ nav ul li {
   border-radius: 10px;
 }
 
-nav ul li:hover{
+nav ul li:hover {
   background-color: #d0d3d4;
 }
 
