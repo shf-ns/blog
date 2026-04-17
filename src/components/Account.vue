@@ -1,4 +1,47 @@
-<script setup lang="ts" name="Account"></script>
+<script setup lang="ts" name="Account">
+import { ref } from 'vue'
+
+const avatarUrl = ref<string | null>(null)
+
+// 将 File/Blob 转换为 Base64 URL
+const convertImageToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+//处理头像上传
+const handleAatarUpload = async (event: Event): Promise<void> => {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+
+  if (!file) return
+
+  // 验证文件类型
+  if (!file.type.startsWith('image/')) {
+    alert('请选择图片文件')
+    return
+  }
+
+  //创建临时URL用于预览
+  const baseUrl = await convertImageToBase64(file)
+  avatarUrl.value = baseUrl
+
+}
+
+/**
+ * 清理临时URL（防止内存泄漏）
+ */
+const cleanupAvatarUrl = (): void => {
+  if (avatarUrl.value) {
+    URL.revokeObjectURL(avatarUrl.value)
+    avatarUrl.value = null
+  }
+}
+</script>
 
 <template>
   <div class="account">
@@ -6,8 +49,11 @@
       <div class="avatar">
         <div class="avatar-upload">
           <label for="avatar-input" class="avatar-label">
-            <div class="avatar-plus">+</div>
-            <input type="file" accept="image/*" id="avatar-input" style="display: none;">
+            <div v-if="avatarUrl" class="avatar-preview">
+              <img :src="avatarUrl" alt="头像预览" class="preview-image">
+            </div>
+            <div v-else class="avatar-plus">+</div>
+            <input @change="handleAatarUpload" type="file" accept="image/*" id="avatar-input" style="display: none;">
           </label>
         </div>
       </div>
@@ -80,6 +126,19 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+}
+
+.avatar-label .avatar-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .avatar-plus {
