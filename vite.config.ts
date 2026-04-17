@@ -9,7 +9,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    // vueDevTools(),
     vueSetupExtend(),
   ],
   resolve: {

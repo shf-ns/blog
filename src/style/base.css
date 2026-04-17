@@ -39,6 +39,13 @@ textarea,
 select {
   font: inherit;
   color: inherit;
+  border: 0;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
 /* 按钮重置 */

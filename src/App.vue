@@ -1,6 +1,6 @@
 <script setup lang="ts" name="App">
 import { ref } from 'vue'
-import { RouterView, RouterLink } from 'vue-router';
+import { RouterView } from 'vue-router';
 
 </script>
 
@@ -9,33 +9,31 @@ import { RouterView, RouterLink } from 'vue-router';
     <!-- 侧边导航栏 -->
     <div class="sidebar">
       <!-- 用户信息 -->
-      <div class="user-info">
+      <RouterLink to="account" class="user-info">
         <div class="avatar">
           <img src="" alt="">
         </div>
         <div class="user-name">用户名</div>
         <!-- <div v-show="login" class="user-login">请先登录</div> -->
-      </div>
+      </RouterLink>
       <!-- 导航栏 -->
       <nav>
         <ul>
           <li>
-            <div>
-              <img src="./assets/tubiao_shouye-.png" alt="">
-            </div>
-            <RouterLink to="home" class="item">首页</RouterLink>
+            <RouterLink to="home">
+              <div>
+                <img src="./assets/tubiao_shouye-.png" alt="">
+              </div>
+              <span class="item">首页</span>
+            </RouterLink>
           </li>
           <li>
-            <div>
-              <img src="./assets/zixun.png" alt="">
-            </div>
-            <span class="item">吐槽贴</span>
-          </li>
-          <li>
-            <div>
-              <img src="./assets/1shezhi-1.png" alt="">
-            </div>
-            <span class="item">设置</span>
+            <RouterLink to="setting">
+              <div>
+                <img src="./assets/1shezhi-1.png" alt="">
+              </div>
+              <span class="item">设置</span>
+            </RouterLink>
           </li>
         </ul>
       </nav>
@@ -52,13 +50,18 @@ import { RouterView, RouterLink } from 'vue-router';
 .app {
   display: flex;
   gap: 30px;
+  min-height: 100vh;
 }
 
 .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 230px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 30px 20px;
   text-align: center;
   box-shadow: 0 4px 16.4px #0000001a;
@@ -71,7 +74,7 @@ import { RouterView, RouterLink } from 'vue-router';
   align-items: center;
   width: 100%;
   height: 250px;
-  margin-bottom: 50px;
+
 }
 
 .user-info .avatar {
@@ -89,33 +92,68 @@ import { RouterView, RouterLink } from 'vue-router';
 
 nav {
   width: 100%;
-  height: 100%;
+  flex: 1;
 }
 
 nav ul {
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-nav ul li {
+nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100px;
-  padding-top: 20px;
-  border-radius: 10px;
+
 }
 
 nav ul li:hover {
-  background-color: #d0d3d4;
+  background-color: #afb2b32d;
+  border-radius: 10px;
 }
 
 nav ul li img {
   width: 30px;
+  height: 30px;
 }
 
 nav ul li .item {
   margin-left: 5px;
   font-size: 20px;
+}
+
+.content {
+  flex: 1;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+@media (max-width:1024px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .user-info .avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .user-info .user-name,
+  .user-info .user-login {
+    font-size: 18px;
+  }
+
+  nav ul li img {
+    width: 25px;
+    height: 25px;
+  }
+
+  nav ul li .item {
+    font-size: 18px;
+  }
+
+  .content {
+    padding: 15px;
+  }
 }
 </style>
