@@ -48,17 +48,20 @@ interface UserInfo {
 const name = ref('')
 const birthdate = ref('')
 
+//提示保存信息是否成功
+const trueAlert = ref<boolean>(false)
+const falseAlert = ref<boolean>(false)
+const nameWarn = ref<boolean>(false)
+
 // 从本地存储加载用户信息
-const userLoadInfo = ():void => {
+const userLoadInfo = (): void => {
   const data = localStorage.getItem('userInfo')
-  if(data){
-    const userInfo:UserInfo = JSON.parse(data)
+  if (data) {
+    const userInfo: UserInfo = JSON.parse(data)
     avatarUrl.value = userInfo.avatar || ''
-    name.value = userInfo.name || ''
+    name.value = userInfo.name as string
     selectedGender.value = userInfo.gender
     birthdate.value = userInfo.birthdate || ''
-  }else{
-    console.log("没有保存信息");
   }
 }
 // 页面加载时自动加载用户信息
@@ -67,14 +70,27 @@ onMounted(() => {
   userLoadInfo();
 });
 
-const saveUserInfo = ():void => {
+const saveUserInfo = (): void => {
   const userInfo: UserInfo = {
     avatar: avatarUrl.value,
     name: name.value.trim(),
     gender: selectedGender.value as 'male' | 'female' | 'secret',
     birthdate: birthdate.value
   }
-  localStorage.setItem('userInfo', JSON.stringify(userInfo))
+  if(userInfo.name){
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    trueAlert.value = true
+    setTimeout(() => {
+      trueAlert.value = false
+    },500)
+  }else{
+    falseAlert.value = true
+    nameWarn.value = true
+    setTimeout(() => {
+      falseAlert.value = false
+      nameWarn.value = false
+    }, 500)
+  }
 
   /**
    * 清理临时URL（防止内存泄漏）
@@ -92,6 +108,8 @@ const saveUserInfo = ():void => {
 <template>
   <div class="account">
     <form>
+      <div v-show="trueAlert" class="true-alert">保存成功</div>
+      <div v-show="falseAlert" class="false-alert">保存失败</div>
       <div class="avatar">
         <div class="avatar-upload">
           <label for="avatar-input" class="avatar-label">
@@ -106,6 +124,7 @@ const saveUserInfo = ():void => {
       <div class="name">
         <span>名字：</span>
         <input v-model="name" type="text">
+        <span v-show="nameWarn" class="name-warning">缺少名字</span>
       </div>
       <div class="gender">
         <span>性别：</span>
@@ -126,7 +145,7 @@ const saveUserInfo = ():void => {
         <span>出生日期：</span>
         <input v-model="birthdate" type="date">
       </div>
-      <button @click="saveUserInfo" class="save">确认保存</button>
+      <button @click.prevent="saveUserInfo" class="save">确认保存</button>
     </form>
   </div>
 </template>
@@ -142,12 +161,40 @@ const saveUserInfo = ():void => {
 }
 
 .account form {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 20px;
   width: 100%;
   height: 100%;
+}
+
+.true-alert,
+.false-alert {
+  position: absolute;
+  top: 0;
+  left: 125px;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 5px;
+  font-size: large;
+  z-index: 1;
+}
+
+.true-alert {
+  color: #0a3622;
+  background-color: #d1e7dd;
+  border: 1px solid #a3cfbb;
+}
+
+.false-alert {
+  color: #58151c;
+  background-color: #f8d7da;
+  border: 1px solid #f1aeb5;
 }
 
 .account:hover {
@@ -196,12 +243,24 @@ const saveUserInfo = ():void => {
   font-weight: 100;
 }
 
+.name {
+  position: relative;
+}
+
 .name input,
 .data input {
   width: 200px;
   height: 30px;
   border: 1px solid rgb(166, 166, 166);
   border-radius: 5px;
+}
+
+.name .name-warning {
+  position: absolute;
+  bottom: -23px;
+  left: 62px;
+  font-size: 15px;
+  color: #58151c;
 }
 
 .gender {
