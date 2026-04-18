@@ -1,5 +1,5 @@
 <script setup lang="ts" name="Account">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 // ------------------用户添加头像功能-------------------------
 const avatarUrl = ref<string | null>(null)
@@ -33,18 +33,48 @@ const handleAatarUpload = async (event: Event): Promise<void> => {
 
 }
 
-/**
- * 清理临时URL（防止内存泄漏）
- */
-const cleanupAvatarUrl = (): void => {
-  if (avatarUrl.value) {
-    URL.revokeObjectURL(avatarUrl.value)
-    avatarUrl.value = null
+// ----------------选择性别，相对应的性别按钮背景颜色改变---------------
+const selectedGender = ref<string>('')
+
+//------------------------收集用户性息，并保存到本地-------------------------------
+interface UserInfo {
+  avatar: string | null;
+  name: string | null;
+  gender: 'male' | 'female' | 'secret';
+  birthdate: string | null;
+}
+
+// 输入框绑定
+const name = ref('')
+const birthdate = ref('')
+
+// const userInfo = reactive<UserInfo>({
+//   avatar: '',
+//   name: '',
+//   gender: 'secret',
+//   birthdate: ''
+// })
+
+const saveUserInfo = ():void => {
+  const userInfo: UserInfo = {
+    avatar: avatarUrl.value,
+    name: name.value.trim(),
+    gender: selectedGender.value as 'male' | 'female' | 'secret',
+    birthdate: birthdate.value
+  }
+  localStorage.setItem('userInfo', JSON.stringify(userInfo))
+
+  /**
+   * 清理临时URL（防止内存泄漏）
+   */
+  const cleanupAvatarUrl = (): void => {
+    if (avatarUrl.value) {
+      URL.revokeObjectURL(avatarUrl.value)
+      avatarUrl.value = null
+    }
   }
 }
 
-// ----------------选择性别，相对应的性别按钮背景颜色改变---------------
-const selectedGender = ref<string>('')
 </script>
 
 <template>
@@ -63,7 +93,7 @@ const selectedGender = ref<string>('')
       </div>
       <div class="name">
         <span>名字：</span>
-        <input type="text">
+        <input v-model="name" type="text">
       </div>
       <div class="gender">
         <span>性别：</span>
@@ -82,8 +112,9 @@ const selectedGender = ref<string>('')
       </div>
       <div class="data">
         <span>出生日期：</span>
-        <input type="date">
+        <input v-model="birthdate" type="date">
       </div>
+      <button @click="saveUserInfo" class="save">确认保存</button>
     </form>
   </div>
 </template>
@@ -173,14 +204,25 @@ const selectedGender = ref<string>('')
   text-align: center;
   line-height: 27px;
   border: 1px solid rgb(166, 166, 166);
-  background-color: #f9fbfc;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .gender .item.active {
-  color: white;
-  background-color: skyblue;
+  background-color: #afb2b32d;
+}
+
+.save {
+  width: 80px;
+  height: 40px;
+  margin-left: 15px;
+  padding: 0 5px;
+  border: 1px solid;
+  background-color: #afb2b32d;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 17px;
 }
 </style>
