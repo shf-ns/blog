@@ -1,6 +1,7 @@
 <script setup lang="ts" name="Account">
 import { ref } from 'vue'
 
+// ------------------用户添加头像功能-------------------------
 const avatarUrl = ref<string | null>(null)
 
 // 将 File/Blob 转换为 Base64 URL
@@ -41,6 +42,9 @@ const cleanupAvatarUrl = (): void => {
     avatarUrl.value = null
   }
 }
+
+// ----------------选择性别，相对应的性别按钮背景颜色改变---------------
+const selectedGender = ref<string>('')
 </script>
 
 <template>
@@ -63,16 +67,16 @@ const cleanupAvatarUrl = (): void => {
       </div>
       <div class="gender">
         <span>性别：</span>
-        <label for="1" class="item">
-          <input type="checkbox" id="1" style="display: none;">
+        <label for="male" class="item" :class="{ active: selectedGender == 'male' }">
+          <input v-model="selectedGender" type="radio" id="male" value="male" style="display: none;">
           <span>男</span>
         </label>
-        <label for="0" class="item">
-          <input type="checkbox" id="0" style="display: none;">
+        <label for="female" class="item" :class="{ active: selectedGender == 'female' }">
+          <input v-model="selectedGender" type="radio" id="female" value="female" style="display: none;">
           <span>女</span>
         </label>
-        <label for="-1" class="item">
-          <input type="checkbox" id="-1" style="display: none;">
+        <label for="secret" class="item" :class="{ active: selectedGender == 'secret' }">
+          <input v-model="selectedGender" type="radio" id="secret" value="secret" style="display: none;">
           <span>保密</span>
         </label>
       </div>
@@ -171,5 +175,12 @@ const cleanupAvatarUrl = (): void => {
   border: 1px solid rgb(166, 166, 166);
   background-color: #f9fbfc;
   border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gender .item.active {
+  color: white;
+  background-color: skyblue;
 }
 </style>
