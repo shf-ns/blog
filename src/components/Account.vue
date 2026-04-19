@@ -54,16 +54,14 @@ const falseAlert = ref<boolean>(false)
 const nameWarn = ref<boolean>(false)
 
 // 从本地存储加载用户信息
-const userLoadInfo = ():void => {
+const userLoadInfo = (): void => {
   const data = localStorage.getItem('userInfo')
-  if(data){
-    const userInfo:UserInfo = JSON.parse(data)
+  if (data) {
+    const userInfo: UserInfo = JSON.parse(data)
     avatarUrl.value = userInfo.avatar || ''
-    name.value = userInfo.name || ''
+    name.value = userInfo.name as string
     selectedGender.value = userInfo.gender
     birthdate.value = userInfo.birthdate || ''
-  }else{
-    console.log("没有保存信息");
   }
 }
 // 页面加载时自动加载用户信息
@@ -72,7 +70,7 @@ onMounted(() => {
   userLoadInfo();
 });
 
-const saveUserInfo = ():void => {
+const saveUserInfo = (): void => {
   const userInfo: UserInfo = {
     avatar: avatarUrl.value,
     name: name.value.trim(),
