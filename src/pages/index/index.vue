@@ -19,7 +19,7 @@ onMounted(() => {
 <template>
   <div class="home">
     <div class="avatar">
-      <img :src="avatarUrl" alt="">
+      <img :src="avatarUrl || 'src/assets/morentupian.png'" alt="">
     </div>
     <div class="info">
       <div class="name">昵称：{{ name }}</div>
@@ -38,6 +38,7 @@ onMounted(() => {
   min-height: 55vh;
   width: 700px;
   margin: 155px auto;
+  padding: 10px;
   border: 1px solid rgb(166, 166, 166);
   border-radius: 20px;
 }
@@ -48,13 +49,13 @@ onMounted(() => {
 
 .home .avatar {
   width: 300px;
-  border-radius: 20px 0 0 20px;
-  overflow: hidden;
+  padding: 10px;
 }
 
 .home .avatar img {
   width: 100%;
-  height: 100%
+  height: 100%;
+  border-radius: 20px;
 }
 
 .info {
@@ -62,7 +63,7 @@ onMounted(() => {
   flex-direction: column;
   gap: 20px;
   width: 380px;
-  padding: 20px;
+  padding: 15px;
 }
 
 .info .name {
@@ -83,7 +84,7 @@ onMounted(() => {
 }
 
 .info .introduction textarea {
-  height: 250px;
+  height: 270px;
   padding: 10px;
   resize: none;
   box-sizing: border-box;

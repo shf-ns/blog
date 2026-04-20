@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import VueRouter from "vue-router/vite"
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
     vue(),
     // vueDevTools(),
     vueSetupExtend(),
+    VueRouter()
   ],
   resolve: {
     alias: {
