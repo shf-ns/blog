@@ -1,48 +1,23 @@
 <script setup lang="ts" name="Account">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import type { UserInfo } from '@/services/UserInfo';
+import { cleanupAvatarUrl, handleAatarUpload } from '@/utils/storage'
 
 // ------------------用户添加头像功能-------------------------
 const avatarUrl = ref<string | null>(null)
 
-// 将 File/Blob 转换为 Base64 URL
-const convertImageToBase64 = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
 //处理头像上传
-const handleAatarUpload = async (event: Event): Promise<void> => {
-  const input = event.target as HTMLInputElement
-  const file = input.files?.[0]
-
-  if (!file) return
-
-  // 验证文件类型
-  if (!file.type.startsWith('image/')) {
-    alert('请选择图片文件')
-    return
+const handleAvatarChange = async (event: Event): Promise<void> => {
+  const result = await handleAatarUpload(event)
+  if (result) {
+    avatarUrl.value = result
   }
-
-  //创建临时URL用于预览
-  const baseUrl = await convertImageToBase64(file)
-  avatarUrl.value = baseUrl
-
 }
 
 // ----------------选择性别，相对应的性别按钮背景颜色改变---------------
 const selectedGender = ref<string>('')
 
 //------------------------收集用户性息，并保存到本地-------------------------------
-interface UserInfo {
-  avatar: string | null;
-  name: string | null;
-  gender: 'male' | 'female' | 'secret';
-  birthdate: string | null;
-}
 
 // 输入框绑定
 const name = ref('')
@@ -65,7 +40,6 @@ const userLoadInfo = (): void => {
   }
 }
 // 页面加载时自动加载用户信息
-import { onMounted } from 'vue';
 onMounted(() => {
   userLoadInfo();
 });
@@ -93,15 +67,7 @@ const saveUserInfo = (): void => {
     }, 1000)
   }
 
-  /**
-   * 清理临时URL（防止内存泄漏）
-   */
-  const cleanupAvatarUrl = (): void => {
-    if (avatarUrl.value) {
-      URL.revokeObjectURL(avatarUrl.value)
-      avatarUrl.value = null
-    }
-  }
+  cleanupAvatarUrl(avatarUrl.value)
 }
 
 </script>
@@ -118,7 +84,7 @@ const saveUserInfo = (): void => {
               <img :src="avatarUrl" alt="头像预览" class="preview-image">
             </div>
             <div v-else class="avatar-plus">+</div>
-            <input @change="handleAatarUpload" type="file" accept="image/*" id="avatar-input" style="display: none;">
+            <input @change="handleAvatarChange" type="file" accept="image/*" id="avatar-input" style="display: none;">
           </label>
         </div>
       </div>
@@ -282,7 +248,8 @@ const saveUserInfo = (): void => {
 }
 
 .gender .item.active {
-  background-color: #afb2b32d;
+  color: white;
+  background-color: skyblue;
 }
 
 .save {
