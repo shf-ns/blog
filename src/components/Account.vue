@@ -112,7 +112,7 @@ const saveUserInfo = (): void => {
         <span>出生日期：</span>
         <input v-model="birthdate" type="date">
       </div>
-      <button @click.prevent="saveUserInfo" class="save">确认保存</button>
+      <button @click="saveUserInfo" class="save">确认保存</button>
     </form>
   </div>
 </template>

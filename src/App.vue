@@ -1,6 +1,19 @@
 <script setup lang="ts" name="App">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { RouterView } from 'vue-router';
+
+const data = localStorage.getItem('userInfo')
+const dataObj = data ? JSON.parse(data) : null
+
+const avatarUrl = ref<string | undefined>(undefined);
+
+const name = ref<string>('用户名')
+
+onMounted(() => {
+  avatarUrl.value = dataObj?.avatar || undefined
+  name.value = dataObj?.name || '用户名'
+});
+
 
 </script>
 
@@ -11,9 +24,9 @@ import { RouterView } from 'vue-router';
       <!-- 用户信息 -->
       <RouterLink to="account" class="user-info">
         <div class="avatar">
-          <img src="" alt="">
+          <img :src="avatarUrl" alt="">
         </div>
-        <div class="user-name">用户名</div>
+        <div class="user-name">{{ name }}</div>
         <!-- <div v-show="login" class="user-login">请先登录</div> -->
       </RouterLink>
       <!-- 导航栏 -->
@@ -83,6 +96,16 @@ import { RouterView } from 'vue-router';
   margin-bottom: 15px;
   border: 1px solid #0000001a;
   border-radius: 50px;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar img[src=""] {
+  display: none;
 }
 
 .user-info .user-name,

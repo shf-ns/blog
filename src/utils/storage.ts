@@ -3,7 +3,7 @@ import type{UserInfo} from '@/services/UserInfo'
  * 将 File/Blob 转换为 Base64 URL
  * file：图像文件
  */
-const convertImageToBase64 = (file: File): Promise<string> => {
+export const convertImageToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result as string);

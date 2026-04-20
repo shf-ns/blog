@@ -1,12 +1,28 @@
-<script setup lang="ts" name="Home"></script>
+<script setup lang="ts" name="Home">
+import { ref, onMounted } from 'vue'
+import { RouterView } from 'vue-router';
+
+const data = localStorage.getItem('userInfo')
+const dataObj = data ? JSON.parse(data) : null
+
+const avatarUrl = ref<string | undefined>(undefined);
+
+const name = ref<string>('用户名')
+
+onMounted(() => {
+  avatarUrl.value = dataObj?.avatar || undefined
+  name.value = dataObj?.name
+});
+
+</script>
 
 <template>
   <div class="home">
     <div class="avatar">
-      <img src="" alt="">
+      <img :src="avatarUrl" alt="">
     </div>
     <div class="info">
-      <div class="name">昵称：</div>
+      <div class="name">昵称：{{ name }}</div>
       <div class="introduction">
         <span>个人介绍：</span>
         <textarea></textarea>
@@ -32,7 +48,7 @@
 
 .home .avatar {
   width: 300px;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   overflow: hidden;
 }
 
