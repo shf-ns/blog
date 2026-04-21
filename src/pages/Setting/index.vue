@@ -36,9 +36,9 @@ import { ref } from 'vue'
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  max-width: 500px;
+  max-width: 13.3333rem;
   height: 55vh;
-  margin: 100px 200px;
+  margin: 2.6667rem 5.3333rem;
 }
 
 .theme,
@@ -50,24 +50,24 @@ import { ref } from 'vue'
 
 .theme .title,
 .language .title {
-  font-size: 25px;
+  font-size: .6667rem;
   font-weight: 600;
 }
 
 .theme .item,
 .language .item {
-  width: 90px;
-  height: 40px;
-  border: 1px solid;
-  font-size: 18px;
+  width: 2.4rem;
+  height: 1.0667rem;
+  border: .0267rem solid;
+  font-size: .48rem;
   text-align: center;
-  line-height: 40px;
-  border: 1px solid rgb(166, 166, 166);
-  border-radius: 10px;
+  line-height: 1.0667rem;
+  border: .0267rem solid rgb(166, 166, 166);
+  border-radius: .2667rem;
 }
 
 .theme .item:hover,
 .language .item:hover {
-  box-shadow: 0 10px 16.4px #d0d3d4;
+  box-shadow: 0 .2667rem .4373rem #d0d3d4;
 }
 </style>
