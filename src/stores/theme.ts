@@ -23,16 +23,6 @@ export const useThemeStore = defineStore("theme", () => {
        * - error/warning/success: 功能色
        */
       return {
-        "--primary-color": "#4dabf7",
-        "--secondary-color": "#868e96",
-        "--background-color": "#1a1a1a",
-        "--text-color": "#ffffff",
-        "--sidebar-bg": "#2d2d2d",
-        "--card-bg": "#2d2d2d",
-        "--border-color": "#404040",
-      };
-    } else {
-      return {
         "--primary-color": "#007bff",
         "--secondary-color": "#6c757d",
         "--background-color": "#ffffff",
@@ -41,11 +31,21 @@ export const useThemeStore = defineStore("theme", () => {
         "--card-bg": "#ffffff",
         "--border-color": "#e0e0e0",
       };
+    } else {
+      return {
+        "--primary-color": "#4dabf7",
+        "--secondary-color": "#868e96",
+        "--background-color": "#1a1a1a",
+        "--text-color": "#ffffff",
+        "--sidebar-bg": "#2d2d2d",
+        "--card-bg": "#2d2d2d",
+        "--border-color": "#404040",
+      };
     }
   });
 
   //切换主题
-  const toggleTheme = (mode?: ThemeMode) => {
+  const toggleTheme = (mode: ThemeMode) => {
     //如果有指定模式则使用，否则切换当前模式
     if (mode) {
       themeMode.value = mode;
@@ -56,28 +56,28 @@ export const useThemeStore = defineStore("theme", () => {
     //将所选的主题存入本地存储当中
     localStorage.setItem("theme-mode", themeMode.value);
 
-    applyCssVariables()
+    applyCssVariables();
   };
 
   //应用css变量
-  const applyCssVariables = (() => {
+  const applyCssVariables = () => {
     // 返回 document 的根元素
-    const root = document.documentElement
+    const root = document.documentElement;
     const variables = cssVariables.value;
 
     Object.entries(variables).forEach(([key, value]) => {
-      root.style.setProperty(key, value)
-    })
-  })
+      root.style.setProperty(key, value);
+    });
+  };
 
   //初始化主题
   const initializeTheme = () => {
-    const saveTheme = localStorage.getItem("theme-mode") as ThemeMode
+    const saveTheme = localStorage.getItem("theme-mode") as ThemeMode;
 
-    if(saveTheme){
-      themeMode.value = saveTheme
+    if (saveTheme) {
+      themeMode.value = saveTheme;
     }
-    
+
     applyCssVariables();
   };
 

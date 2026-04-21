@@ -1,6 +1,23 @@
 <script setup lang="ts" name="Setting">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import {useThemeStore, type ThemeMode}from '@/stores/theme'
 
+const themeStore = useThemeStore()
+
+// 主题模式
+const selectTheme = ref<ThemeMode>(themeStore.themeMode)
+
+
+// 监听主题变化
+const themeChange = (mode: ThemeMode) => {
+  selectTheme.value = mode
+  themeStore.toggleTheme(mode)
+}
+
+// 初始化时同步主题状态
+onMounted(() => {
+  selectTheme.value = themeStore.themeMode
+})
 
 </script>
 
@@ -9,11 +26,11 @@ import { ref } from 'vue'
     <div class="theme">
       <span class="title">主题：</span>
       <label for="light" class="item">
-        <input type="radio" id="light" style="display: none;">
+        <input type="radio" id="light" style="display: none;" :checked="selectTheme === 'light'" @change="themeChange('light')">
         <span>浅色</span>
       </label>
       <label for="dark" class="item">
-        <input type="radio" id="dark" style="display: none;">
+        <input type="radio" id="dark" style="display: none;" :checked="selectTheme === 'dark'" @change="themeChange('dark')">
         <span>深色</span>
       </label>
     </div>
@@ -62,12 +79,18 @@ import { ref } from 'vue'
   font-size: 18px;
   text-align: center;
   line-height: 40px;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
 }
 
 .theme .item:hover,
 .language .item:hover {
+  background-color: var(--card-bg);
   box-shadow: 0 10px 16.4px #d0d3d4;
+}
+
+input[type="radio"]:checked+span {
+  background-color: var(--primary-color);
+  color: white;
 }
 </style>

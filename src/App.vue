@@ -78,7 +78,7 @@ onMounted(() => {
   padding: 30px 20px;
   text-align: center;
   box-shadow: 0 4px 16.4px #0000001a;
-  background: #f9fbfc;
+  background: var(--sidebar-bg);
 }
 
 .user-info {
