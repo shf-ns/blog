@@ -89,7 +89,7 @@ onMounted(() => {
   box-shadow: 0 10px 16.4px #d0d3d4;
 }
 
-input[type="radio"]:checked+span {
+label[class="item"]:checked {
   background-color: var(--primary-color);
   color: white;
 }

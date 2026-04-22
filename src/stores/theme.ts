@@ -26,10 +26,11 @@ export const useThemeStore = defineStore("theme", () => {
         "--primary-color": "#007bff",
         "--secondary-color": "#6c757d",
         "--background-color": "#ffffff",
-        "--text-color": "#333333",
+        "--text-primary": "#333333",
         "--sidebar-bg": "#f9fbfc",
         "--card-bg": "#ffffff",
         "--border-color": "#e0e0e0",
+        "--warn": 'red'
       };
     } else {
       return {
