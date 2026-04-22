@@ -234,7 +234,6 @@ const saveUserInfo = (): void => {
 }
 
 .gender {
-  width: 260px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -243,10 +242,11 @@ const saveUserInfo = (): void => {
 }
 
 .gender .item {
-  width: 45px;
-  height: 30px;
+  min-width: 45px;
+  height: 35px;
+  padding: 0 5px;
   text-align: center;
-  line-height: 27px;
+  line-height: 34px;
   border: 1px solid rgb(166, 166, 166);
   border-radius: 5px;
   cursor: pointer;
