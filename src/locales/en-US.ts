@@ -19,10 +19,19 @@ export default {
   },
   home: {
     title: "Home",
-    welcome: "Welcome to Blog System",
+    name: "Name",
+    introduction: "Personal Introduction",
   },
   account: {
     title: "Account",
     profile: "Profile",
+    nameWarning: "缺少名字",
+    sex: "Sex",
+    male: "Male",
+    female: "Female",
+    secret: "Secret",
+    birthdate: "BirthDate",
+    trueAlert: "Saved successfully",
+    falseAlert: "Save failed",
   },
 };

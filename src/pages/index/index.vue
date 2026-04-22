@@ -1,6 +1,9 @@
 <script setup lang="ts" name="Home">
 import { ref, onMounted } from 'vue'
 import { RouterView } from 'vue-router';
+import {useI18n} from 'vue-i18n'
+
+const {t} = useI18n()
 
 const data = localStorage.getItem('userInfo')
 const dataObj = data ? JSON.parse(data) : null
@@ -22,9 +25,9 @@ onMounted(() => {
       <img :src="avatarUrl || 'src/assets/morentupian.png'" alt="">
     </div>
     <div class="info">
-      <div class="name">昵称：{{ name }}</div>
+      <div class="name">{{t('home.name')}}：{{ name }}</div>
       <div class="introduction">
-        <span>个人介绍：</span>
+        <span>{{t('home.introduction')}}：</span>
         <textarea></textarea>
       </div>
     </div>

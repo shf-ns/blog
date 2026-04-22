@@ -2,6 +2,9 @@
 import { ref, reactive, onMounted } from 'vue'
 import type { UserInfo } from '@/services/UserInfo';
 import { cleanupAvatarUrl, handleAatarUpload } from '@/utils/storage'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 // ------------------用户添加头像功能-------------------------
 const avatarUrl = ref<string | null>(null)
@@ -75,13 +78,13 @@ const saveUserInfo = (): void => {
 <template>
   <div class="account">
     <form>
-      <div v-show="trueAlert" class="true-alert">保存成功</div>
-      <div v-show="falseAlert" class="false-alert">保存失败</div>
+      <div v-show="trueAlert" class="true-alert">{{ t('account.trueAlert') }}</div>
+      <div v-show="falseAlert" class="false-alert">{{ t('account.falseAlert') }}</div>
       <div class="avatar">
         <div class="avatar-upload">
           <label for="avatar-input" class="avatar-label">
             <div v-if="avatarUrl" class="avatar-preview">
-              <img :src="avatarUrl" alt="头像预览" class="preview-image">
+              <img :src="avatarUrl" alt="" class="preview-image">
             </div>
             <div v-else class="avatar-plus">+</div>
             <input @change="handleAvatarChange" type="file" accept="image/*" id="avatar-input" style="display: none;">
@@ -89,30 +92,30 @@ const saveUserInfo = (): void => {
         </div>
       </div>
       <div class="name">
-        <span>名字：</span>
+        <span>{{ t('home.name') }}：</span>
         <input v-model="name" type="text">
-        <span v-show="nameWarn" class="name-warning">缺少名字</span>
+        <span v-show="nameWarn" class="name-warning">{{ t('account.nameWarning') }}</span>
       </div>
       <div class="gender">
-        <span>性别：</span>
+        <span class="gender-title">{{ t('account.sex') }}：</span>
         <label for="male" class="item" :class="{ active: selectedGender == 'male' }">
           <input v-model="selectedGender" type="radio" id="male" value="male" style="display: none;">
-          <span>男</span>
+          <span>{{ t('account.male') }}</span>
         </label>
         <label for="female" class="item" :class="{ active: selectedGender == 'female' }">
           <input v-model="selectedGender" type="radio" id="female" value="female" style="display: none;">
-          <span>女</span>
+          <span>{{ t('account.female') }}</span>
         </label>
         <label for="secret" class="item" :class="{ active: selectedGender == 'secret' }">
           <input v-model="selectedGender" type="radio" id="secret" value="secret" style="display: none;">
-          <span>保密</span>
+          <span>{{ t('account.secret') }}</span>
         </label>
       </div>
       <div class="data">
-        <span>出生日期：</span>
+        <span>{{ t('account.birthdate') }}：</span>
         <input v-model="birthdate" type="date">
       </div>
-      <button @click="saveUserInfo" class="save">确认保存</button>
+      <button @click.prevent="saveUserInfo" class="save">{{ t('common.save') }}</button>
     </form>
   </div>
 </template>
@@ -232,8 +235,11 @@ const saveUserInfo = (): void => {
 
 .gender {
   width: 260px;
+  height: 40px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .gender .item {

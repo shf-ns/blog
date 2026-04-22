@@ -1,6 +1,9 @@
 <script setup lang="ts" name="App">
 import { ref, onMounted } from 'vue'
 import { RouterView } from 'vue-router';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const data = localStorage.getItem('userInfo')
 const dataObj = data ? JSON.parse(data) : null
@@ -27,7 +30,6 @@ onMounted(() => {
           <img :src="avatarUrl || 'src/assets/morentouxiang.png'" alt="">
         </div>
         <div class="user-name">{{ name }}</div>
-        <!-- <div v-show="login" class="user-login">请先登录</div> -->
       </RouterLink>
       <!-- 导航栏 -->
       <nav>
@@ -37,7 +39,7 @@ onMounted(() => {
               <div>
                 <img src="./assets/tubiao_shouye-.png" alt="">
               </div>
-              <span class="item">首页</span>
+              <span class="item">{{t('common.home')}}</span>
             </RouterLink>
           </li>
           <li>
@@ -45,7 +47,7 @@ onMounted(() => {
               <div>
                 <img src="./assets/1shezhi-1.png" alt="">
               </div>
-              <span class="item">设置</span>
+              <span class="item">{{t('common.settings')}}</span>
             </RouterLink>
           </li>
         </ul>

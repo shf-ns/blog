@@ -19,10 +19,19 @@ export default {
   },
   home: {
     title: "首页",
-    welcome: "欢迎来到博客系统",
+    name: "名称",
+    introduction: "个人介绍",
   },
   account: {
     title: "账户",
     profile: "个人资料",
+    nameWarning: "缺少名字",
+    sex: "性别",
+    male: "男",
+    female: "女",
+    secret: "保密",
+    birthdate: "出生日期",
+    trueAlert: "保存成功",
+    falseAlert: "保存失败",
   },
 };

@@ -1,48 +1,64 @@
 <script setup lang="ts" name="Setting">
 import { ref, onMounted } from 'vue'
-import {useThemeStore, type ThemeMode}from '@/stores/theme'
+import { useThemeStore, type ThemeMode } from '@/stores/theme'
+import type { Language } from '@/locales/index'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n()
 
 const themeStore = useThemeStore()
 
 // 主题模式
 const selectTheme = ref<ThemeMode>(themeStore.themeMode)
-
-
 // 监听主题变化
 const themeChange = (mode: ThemeMode) => {
   selectTheme.value = mode
   themeStore.toggleTheme(mode)
 }
 
+//语言变化
+const selectLanguage = ref<Language>(locale.value as Language)
+// 监听语言变化
+const languageChange = (lang: Language) => {
+  selectLanguage.value = lang
+  locale.value = lang
+}
+
 // 初始化时同步主题状态
 onMounted(() => {
   selectTheme.value = themeStore.themeMode
+  selectLanguage.value = locale.value as Language
 })
+
 
 </script>
 
 <template>
   <div class="box">
     <div class="theme">
-      <span class="title">主题：</span>
+      <span class="title">{{ t('settings.themeTitle') }}：</span>
       <label for="light" class="item">
-        <input type="radio" id="light" style="display: none;" :checked="selectTheme === 'light'" @change="themeChange('light')">
-        <span>浅色</span>
+        <input type="radio" id="light" style="display: none;" :checked="selectTheme === 'light'"
+          @change="themeChange('light')">
+        <span>{{ t('common.light') }}</span>
       </label>
       <label for="dark" class="item">
-        <input type="radio" id="dark" style="display: none;" :checked="selectTheme === 'dark'" @change="themeChange('dark')">
-        <span>深色</span>
+        <input type="radio" id="dark" style="display: none;" :checked="selectTheme === 'dark'"
+          @change="themeChange('dark')">
+        <span>{{ t('common.dark') }}</span>
       </label>
     </div>
     <div class="language">
-      <span class="title">语言：</span>
+      <span class="title">{{ t('settings.languageTitle') }}：</span>
       <label for="Chinese" class="item">
-        <input type="radio" id="Chinese" style="display: none;">
-        <span>简体中文</span>
+        <input type="radio" id="Chinese" style="display: none;" :checked="selectLanguage === 'zh-CN'"
+          @change="languageChange('zh-CN')">
+        <span>{{ t('common.chinese') }}</span>
       </label>
       <label for="English" class="item">
-        <input type="radio" id="English" style="display: none;">
-        <span>英文</span>
+        <input type="radio" id="English" style="display: none;" :checked="selectLanguage === 'en-US'"
+          @change="languageChange('en-US')">
+        <span>{{ t('common.english') }}</span>
       </label>
     </div>
   </div>
