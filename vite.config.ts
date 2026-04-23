@@ -12,11 +12,12 @@ export default defineConfig({
     vue(),
     // vueDevTools(),
     vueSetupExtend(),
-    VueRouter()
+    VueRouter(),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-})
+  base: '/blog/',
+});

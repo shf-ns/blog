@@ -19,8 +19,8 @@ onMounted(() => {
 // 监听userInfo变化，更新显示
 watch(() => userStore.userInfo, (newInfo) => {
   avatarUrl.value = newInfo?.avatar || undefined
-  name.value = newInfo?.name || '用户名'
-}, { deep: true })
+  name.value =  newInfo?.name || '用户名'
+}, { deep: true } )  
 
 </script>
 
