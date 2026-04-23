@@ -1,0 +1,1 @@
+import{M as e}from"./_plugin-vue_export-helper-CgLxtaBR.js";import{n as t}from"./pinia-CkK4yxlX.js";var n=t(`user`,()=>{let t=e(null),n=()=>{let e=localStorage.getItem(`userInfo`);e&&(t.value=JSON.parse(e))};return n(),{userInfo:t,loadUserInfo:n,saveUserInfo:e=>{t.value=e,localStorage.setItem(`userInfo`,JSON.stringify(e))}}});export{n as t};
