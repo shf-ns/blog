@@ -23,24 +23,31 @@ export const useThemeStore = defineStore("theme", () => {
        * - error/warning/success: 功能色
        */
       return {
-        "--primary-color": "#007bff",
-        "--secondary-color": "#6c757d",
-        "--background-color": "#ffffff",
+        "--bg-primary": "#ffffff",
         "--text-primary": "#333333",
+        "--border-color": "rgb(166, 166, 166)",
+        "--save-bg": "#afb2b32d",
+        "--gender-active-text-color": "white",
+        "--gender-active-bg-color": "skyblue",
+        "--sidebar-hover-bg": "#afb2b32d",
+        "--shadow-color": "#d0d3d4",
         "--sidebar-bg": "#f9fbfc",
         "--card-bg": "#ffffff",
-        "--border-color": "#e0e0e0",
-        "--warn": 'red'
+        "--warn": "#ff4d4f",
       };
     } else {
       return {
-        "--primary-color": "#4dabf7",
-        "--secondary-color": "#868e96",
-        "--background-color": "#1a1a1a",
-        "--text-color": "#ffffff",
-        "--sidebar-bg": "#2d2d2d",
-        "--card-bg": "#2d2d2d",
-        "--border-color": "#404040",
+        "--bg-primary": "#2c3d4a",
+        "--text-primary": "#ffffff",
+        "--border-color": "rgb(166, 166, 166)",
+        "--save-bg": "#afb2b32d",
+        "--gender-active-text-color": "white",
+        "--gender-active-bg-color": "skyblue",
+        "--sidebar-hover-bg": "#afb2b32d",
+        "--shadow-color": "#d0d3d4",
+        "--sidebar-bg": "#0f212d",
+        "--card-bg": "#ffffff",
+        "--warn": "#ff4d4f",
       };
     }
   });

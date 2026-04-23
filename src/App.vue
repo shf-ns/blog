@@ -49,7 +49,7 @@ watch(() => userStore.userInfo, (newInfo) => {
           <li>
             <RouterLink to="setting">
               <div>
-                <img src="./assets/1shezhi-1.png" alt="">
+                <img src="./assets/shezhi.png" alt="">
               </div>
               <span class="item">{{t('common.settings')}}</span>
             </RouterLink>
@@ -83,7 +83,7 @@ watch(() => userStore.userInfo, (newInfo) => {
   min-height: 100vh;
   padding: 30px 20px;
   text-align: center;
-  box-shadow: 0 4px 16.4px #0000001a;
+  box-shadow: 0 4px 16.4px var(--shadow-color);
   background: var(--sidebar-bg);
 }
 
@@ -100,7 +100,7 @@ watch(() => userStore.userInfo, (newInfo) => {
   width: 100px;
   height: 100px;
   margin-bottom: 15px;
-  border: 1px solid #0000001a;
+  border: 1px solid var(--border-color);
   border-radius: 50px;
   overflow: hidden;
 }
@@ -137,7 +137,7 @@ nav ul li a {
 }
 
 nav ul li:hover {
-  background-color: #afb2b32d;
+  background-color: var(--sidebar-hover-bg);
   border-radius: 10px;
 }
 

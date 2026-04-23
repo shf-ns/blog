@@ -42,12 +42,12 @@ onMounted(() => {
   width: 700px;
   margin: 155px auto;
   padding: 10px;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
 }
 
 .home:hover {
-  box-shadow: 0 10px 16.4px #d0d3d4;
+  box-shadow: 0 10px 16.4px var(--shadow-color);
 }
 
 .home .avatar {
@@ -72,7 +72,7 @@ onMounted(() => {
 .info .name {
   width: 100%;
   height: 40px;
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid var(--border-color);
   font-size: 20px;
 }
 
@@ -91,7 +91,7 @@ onMounted(() => {
   padding: 10px;
   resize: none;
   box-sizing: border-box;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
 }
 

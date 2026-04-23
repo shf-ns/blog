@@ -128,7 +128,7 @@ const saveUserInfo = (): void => {
   height: 65vh;
   margin: 100px auto;
   padding: 20px;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
 }
 
@@ -170,7 +170,7 @@ const saveUserInfo = (): void => {
 }
 
 .account:hover {
-  box-shadow: 0 10px 16.4px #d0d3d4;
+  box-shadow: 0 10px 16.4px var(--shadow-color);
 }
 
 .account span {
@@ -223,7 +223,7 @@ const saveUserInfo = (): void => {
 .data input {
   width: 200px;
   height: 30px;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border-color);
   border-radius: 5px;
 }
 
@@ -232,7 +232,7 @@ const saveUserInfo = (): void => {
   bottom: -23px;
   left: 62px;
   font-size: 15px;
-  color: #58151c;
+  color: var(--warn);
 }
 
 .gender {
@@ -249,15 +249,15 @@ const saveUserInfo = (): void => {
   padding: 0 5px;
   text-align: center;
   line-height: 34px;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .gender .item.active {
-  color: white;
-  background-color: skyblue;
+  color: var(--gender-active-text-color);
+  background-color: var(--gender-active-bg-color);
 }
 
 .save {
@@ -266,7 +266,7 @@ const saveUserInfo = (): void => {
   margin-left: 15px;
   padding: 0 5px;
   border: 1px solid;
-  background-color: #afb2b32d;
+  background-color: var(--save-bg);
   border-radius: 5px;
   text-align: center;
   line-height: 40px;

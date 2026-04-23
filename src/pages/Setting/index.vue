@@ -36,7 +36,7 @@ onMounted(() => {
 <template>
   <div class="box">
     <div class="theme">
-      <span class="title">{{ t('settings.themeTitle') }}：</span>
+      <span class="title">{{ t('settings.themeTitle') }}</span>
       <label for="light" class="item">
         <input type="radio" id="light" style="display: none;" :checked="selectTheme === 'light'"
           @change="themeChange('light')">
@@ -49,7 +49,7 @@ onMounted(() => {
       </label>
     </div>
     <div class="language">
-      <span class="title">{{ t('settings.languageTitle') }}：</span>
+      <span class="title">{{ t('settings.languageTitle') }}</span>
       <label for="Chinese" class="item">
         <input type="radio" id="Chinese" style="display: none;" :checked="selectLanguage === 'zh-CN'"
           @change="languageChange('zh-CN')">
