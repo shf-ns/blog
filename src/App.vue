@@ -31,7 +31,7 @@ watch(() => userStore.userInfo, (newInfo) => {
       <!-- 用户信息 -->
       <RouterLink to="account" class="user-info">
         <div class="avatar">
-          <img :src="avatarUrl || '@/assets/morentouxiang.png'" alt="">
+          <img v-if="avatarUrl" :src="avatarUrl" alt="">
         </div>
         <div class="user-name">{{ name }}</div>
       </RouterLink>

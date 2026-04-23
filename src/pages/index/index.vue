@@ -22,7 +22,7 @@ onMounted(() => {
 <template>
   <div class="home">
     <div class="avatar">
-      <img :src="avatarUrl || '@/assets/morentupian.png'" alt="">
+      <img v-if="avatarUrl" :src="avatarUrl" alt="">
     </div>
     <div class="info">
       <div class="name">{{t('home.name')}}：{{ name }}</div>
