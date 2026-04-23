@@ -3,8 +3,10 @@ import { ref, reactive, onMounted } from 'vue'
 import type { UserInfo } from '@/services/UserInfo';
 import { cleanupAvatarUrl, handleAatarUpload } from '@/utils/storage'
 import { useI18n } from 'vue-i18n'
+import { useUserStore } from '@/stores/user'
 
 const { t } = useI18n()
+const userStore = useUserStore()
 
 // ------------------用户添加头像功能-------------------------
 const avatarUrl = ref<string | null>(null)
@@ -56,7 +58,7 @@ const saveUserInfo = (): void => {
   }
 
   if (userInfo.name) {
-    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    userStore.saveUserInfo(userInfo)
     trueAlert.value = true
     setTimeout(() => {
       trueAlert.value = false

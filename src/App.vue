@@ -1,22 +1,26 @@
 <script setup lang="ts" name="App">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { RouterView } from 'vue-router';
 import { useI18n } from 'vue-i18n'
+import { useUserStore } from '@/stores/user'
 
 const { t } = useI18n()
 
-const data = localStorage.getItem('userInfo')
-const dataObj = data ? JSON.parse(data) : null
+const userStore = useUserStore()
 
 const avatarUrl = ref<string | undefined>(undefined);
-
 const name = ref<string>('用户名')
 
 onMounted(() => {
-  avatarUrl.value = dataObj?.avatar || undefined
-  name.value = dataObj?.name || '用户名'
+  avatarUrl.value = userStore.userInfo?.avatar || undefined
+  name.value = userStore.userInfo?.name || '用户名'
 });
 
+// 监听userInfo变化，更新显示
+watch(() => userStore.userInfo, (newInfo) => {
+  avatarUrl.value = newInfo?.avatar || undefined
+  name.value = newInfo?.name || '用户名'
+}, { deep: true })
 
 </script>
 
