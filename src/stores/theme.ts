@@ -22,7 +22,7 @@ export const useThemeStore = defineStore("theme", () => {
        * - shadow-color: 阴影颜色（带透明度）
        * - error/warning/success: 功能色
        */
-      return {
+      return { 
         "--bg-primary": "#ffffff",
         "--text-primary": "#333333",
         "--border-color": "rgb(166, 166, 166)",
