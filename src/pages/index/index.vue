@@ -22,7 +22,7 @@ onMounted(() => {
 <template>
   <div class="home">
     <div class="avatar">
-      <img :src="avatarUrl || 'src/assets/morentupian.png'" alt="">
+      <img :src="avatarUrl || '../../src/assets/morentupian.png'" alt="">
     </div>
     <div class="info">
       <div class="name">{{t('home.name')}}：{{ name }}</div>
