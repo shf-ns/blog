@@ -31,7 +31,7 @@ watch(() => userStore.userInfo, (newInfo) => {
       <!-- 用户信息 -->
       <RouterLink to="account" class="user-info">
         <div class="avatar">
-          <img :src="avatarUrl || '../../src/assets/morentouxiang.png'" alt="">
+          <img :src="avatarUrl || '@/assets/morentouxiang.png'" alt="">
         </div>
         <div class="user-name">{{ name }}</div>
       </RouterLink>
@@ -41,7 +41,7 @@ watch(() => userStore.userInfo, (newInfo) => {
           <li>
             <RouterLink to="/">
               <div>
-                <img src="../src/assets/tubiao_shouye-.png" alt="">
+                <img src="@/assets/tubiao_shouye-.png" alt="">
               </div>
               <span class="item">{{t('common.home')}}</span>
             </RouterLink>
@@ -49,7 +49,7 @@ watch(() => userStore.userInfo, (newInfo) => {
           <li>
             <RouterLink to="setting">
               <div>
-                <img src="../src/assets/shezhi.png" alt="">
+                <img src="@/assets/shezhi.png" alt="">
               </div>
               <span class="item">{{t('common.settings')}}</span>
             </RouterLink>
