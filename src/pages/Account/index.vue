@@ -115,7 +115,9 @@ const saveUserInfo = (): void => {
       </div>
       <div class="data">
         <span>{{ t('account.birthdate') }}：</span>
-        <input v-model="birthdate" type="date">
+        <label for="birthdate">
+          <input id="birthdate" type="date">
+        </label>
       </div>
       <button @click.prevent="saveUserInfo" class="save">{{ t('common.save') }}</button>
     </form>
