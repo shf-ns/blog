@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterView, RouterLink } from 'vue-router'
+</script>
 
 <template>
   <div class="sider">
@@ -7,18 +9,25 @@
     </div>
     <ul class="sider-menu">
       <li>
-        <div class="icon">
-          <img src="./assets/img/house.png" alt="首页">
-        </div>
-        首页
+        <RouterLink to="/" class="menu-item">
+          <div class="icon">
+            <img src="./assets/img/house.png" alt="首页">
+          </div>
+          首页
+        </RouterLink>
       </li>
       <li>
-        <div class="icon">
-          <img src="./assets/img/project.png" alt="GitHub项目">
-        </div>
-        GitHub项目
+        <RouterLink to="/projects" class="menu-item">
+          <div class="icon">
+            <img src="./assets/img/project.png" alt="GitHub项目">
+          </div>
+          GitHub项目
+        </RouterLink>
       </li>
     </ul>
+  </div>
+  <div class="main">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -51,11 +60,15 @@
 }
 
 .sider-menu li {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+.menu-item {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 40px;
-  font-size: 18px;
+  cursor: pointer;
 }
 
 .sider-menu .icon {
