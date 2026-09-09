@@ -12,7 +12,7 @@ import Switch from '@/components/Switch.vue'
       <li>
         <RouterLink to="/" class="menu-item">
           <div class="icon">
-            <img src="./assets/img/house.png" alt="首页">
+            <img src="./assets/img/home.png" alt="首页">
           </div>
           首页
         </RouterLink>
@@ -31,7 +31,7 @@ import Switch from '@/components/Switch.vue'
       <Switch />
     </div>
   </div>
-  <div class="main" style="flex:1;">
+  <div class="main">
     <router-view></router-view>
   </div>
 </template>
@@ -100,5 +100,10 @@ import Switch from '@/components/Switch.vue'
   align-items: center;
   gap: 5px;
   margin: auto 0 15px auto;
+}
+
+.main {
+  flex: 1;
+  background: #f9fafb;
 }
 </style>
