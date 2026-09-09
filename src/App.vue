@@ -55,20 +55,29 @@ import { RouterView, RouterLink } from 'vue-router'
 }
 
 .sider-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   width: 100%;
   margin-top: 120px;
 }
 
 .sider-menu li {
-  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
   gap: 20px;
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 .sider-menu .icon {
