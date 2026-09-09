@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
+import Switch from '@/components/Switch.vue'
 </script>
 
 <template>
@@ -25,8 +26,12 @@ import { RouterView, RouterLink } from 'vue-router'
         </RouterLink>
       </li>
     </ul>
+    <div class="switch-bottom">
+      <p>主题:</p>
+      <Switch />
+    </div>
   </div>
-  <div class="main">
+  <div class="main" style="flex:1;">
     <router-view></router-view>
   </div>
 </template>
@@ -88,5 +93,12 @@ import { RouterView, RouterLink } from 'vue-router'
 .sider-menu .icon img {
   width: 100%;
   height: 100%;
+}
+
+.switch-bottom {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: auto 0 15px auto;
 }
 </style>
