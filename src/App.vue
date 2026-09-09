@@ -27,9 +27,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: 220px;
   height: 100%;
-  padding: 20px 15px;
+  padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,7 +53,7 @@
 .sider-menu li {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   margin-bottom: 40px;
   font-size: 18px;
 }
