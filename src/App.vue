@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
-import Switch from '@/components/Switch.vue'
+import { Alert, Switch } from '@/components'
 </script>
 
 <template>
@@ -42,6 +42,7 @@ import Switch from '@/components/Switch.vue'
   <div class="main">
     <router-view></router-view>
   </div>
+  <Alert />
 </template>
 
 <style scoped>
@@ -71,7 +72,7 @@ import Switch from '@/components/Switch.vue'
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 50px;
+  margin-top: 80px;
   margin-right: auto;
 }
 
@@ -89,7 +90,7 @@ import Switch from '@/components/Switch.vue'
 .link-item::before {
   content: attr(data-tooltip);
   position: absolute;
-  top: 85%;
+  bottom: 132%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   padding: 2px 5px;
@@ -107,7 +108,7 @@ import Switch from '@/components/Switch.vue'
 .link-item::after {
   content: '';
   position: absolute;
-  top: 107%;
+  bottom: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2px;
@@ -133,7 +134,7 @@ import Switch from '@/components/Switch.vue'
   align-items: center;
   gap: 20px;
   width: 100%;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .sider-menu li {
