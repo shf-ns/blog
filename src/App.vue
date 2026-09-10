@@ -8,6 +8,14 @@ import Switch from '@/components/Switch.vue'
     <div class="sider-avatar">
       <img src="./assets/img/avatar.png" alt="头像">
     </div>
+    <div class="link">
+      <a href="https://github.com/shf-ns" class="github-link link-item" data-tooltip="GitHub">
+        <img src="./assets/img/github.png" alt="GitHub">
+      </a>
+      <div class="email-link link-item" data-tooltip="邮箱">
+        <img src="./assets/img/email.png" alt="邮箱">
+      </div>
+    </div>
     <ul class="sider-menu">
       <li>
         <RouterLink to="/" class="menu-item">
@@ -59,13 +67,73 @@ import Switch from '@/components/Switch.vue'
   height: 100%;
 }
 
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+  margin-right: auto;
+}
+
+.link-item {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.link-item::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: white;
+  font-size: small;
+  white-space: nowrap;
+  background-color: #333;
+  /* 防止鼠标悬停在提示框上导致闪烁 */
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.link-item::after {
+  content: '';
+  position: absolute;
+  top: 107%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2px;
+  background-color: #333;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.link-item:hover::before,
+.link-item:hover::after {
+  opacity: 1;
+}
+
+.link-item img {
+  width: 100%;
+  height: 100%;
+}
+
 .sider-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   width: 100%;
-  margin-top: 120px;
+  margin-top: 70px;
 }
 
 .sider-menu li {
