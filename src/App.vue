@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
-import Switch from '@/components/Switch.vue'
+import { Switch } from '@/components'
 import { ref, type Ref } from 'vue';
 
 const showAlert: Ref<boolean> = ref(false)
@@ -12,7 +12,7 @@ const showAlert: Ref<boolean> = ref(false)
       <img src="./assets/img/avatar.png" alt="头像">
     </div>
     <div class="link">
-      <a href="https://github.com/shf-ns" class="github-link link-item" data-tooltip="GitHub">
+      <a href="https://github.com/shf-ns" target="_blank" class="github-link link-item" data-tooltip="GitHub">
         <img src="./assets/img/github.png" alt="GitHub">
       </a>
       <div class="email-link link-item" data-tooltip="邮箱" @click="showAlert = true">

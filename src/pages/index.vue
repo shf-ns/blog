@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useComputeTime } from "@/tools/computeTime";
 import type { Time } from "@/types/Time";
+import { Footer } from "@/components";
 import { onMounted, onUnmounted, ref, type Ref } from "vue";
 
 const time: Ref<Time> = ref({
@@ -64,19 +65,23 @@ onUnmounted((): void => {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 </template>
 
 <style scoped>
 .home {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 0 200px;
+    height: 100%;
+    padding: 20px 200px;
 }
 
 .content {
     display: flex;
     gap: 60px;
-    margin-top: 150px;
+    margin-top: 120px;
 }
 
 .content-left {
