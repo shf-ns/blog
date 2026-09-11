@@ -1,4 +1,34 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useComputeTime } from "@/tools/computeTime";
+import type { Time } from "@/types/Time";
+import { onMounted, onUnmounted, ref, type Ref } from "vue";
+
+const time: Ref<Time> = ref({
+    year: '',
+    month: '',
+    day: '',
+    hour: '',
+    minute: '',
+    second: '',
+})
+
+const loading: Ref<boolean> = ref(true)
+
+const timer: Ref<number> = ref(0)
+
+onMounted((): void => {
+    timer.value = setInterval((): void => {
+        time.value = useComputeTime(new Date())
+        if (loading.value) {
+            loading.value = false
+        }
+    }, 1000)
+})
+
+onUnmounted((): void => {
+    clearTimeout(timer.value)
+})
+</script>
 
 <template>
     <div class="home">
@@ -18,8 +48,13 @@
             </div>
             <div class="content-right">
                 <div class="time">
-                    <p class="date">2023-08-01</p>
-                    <p class="times">10:30:33</p>
+                    <div v-if="loading">
+                        <p class="loading">加载中....</p>
+                    </div>
+                    <div v-else>
+                        <p class="date">{{ time.year }}-{{ time.month }}-{{ time.day }}</p>
+                        <p class="times">{{ time.hour }}:{{ time.minute }}:{{ time.second }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,5 +138,11 @@
 
 .content-right .time .times {
     font-size: 25px;
+}
+
+.content-right .time .loading {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
 }
 </style>
