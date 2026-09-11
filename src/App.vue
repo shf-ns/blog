@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
-import { Alert, Switch } from '@/components'
+import Switch from '@/components/Switch.vue'
+import { ref, type Ref } from 'vue';
+
+const showAlert: Ref<boolean> = ref(false)
 </script>
 
 <template>
@@ -12,7 +15,7 @@ import { Alert, Switch } from '@/components'
       <a href="https://github.com/shf-ns" class="github-link link-item" data-tooltip="GitHub">
         <img src="./assets/img/github.png" alt="GitHub">
       </a>
-      <div class="email-link link-item" data-tooltip="邮箱">
+      <div class="email-link link-item" data-tooltip="邮箱" @click="showAlert = true">
         <img src="./assets/img/email.png" alt="邮箱">
       </div>
     </div>
@@ -42,7 +45,14 @@ import { Alert, Switch } from '@/components'
   <div class="main">
     <router-view></router-view>
   </div>
-  <Alert />
+  <Transition name="fade">
+    <div class="alert" v-show="showAlert" @click="showAlert = false">
+      <div class="alert-content" @click.stop>
+        <span class="close-btn" @click="showAlert = false">x</span>
+        <p class="alert-text">邮箱：3104467468@qq.com</p>
+      </div>
+    </div>
+  </Transition>
 </template>
 
 <style scoped>
@@ -174,5 +184,53 @@ import { Alert, Switch } from '@/components'
 .main {
   flex: 1;
   background: #f9fafb;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.alert-content {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-text {
+  text-align: center;
+  line-height: 76px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+</style>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
