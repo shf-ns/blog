@@ -63,7 +63,6 @@ const showAlert: Ref<boolean> = ref(false)
   width: 220px;
   height: 100%;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sider-avatar {
@@ -221,9 +220,7 @@ const showAlert: Ref<boolean> = ref(false)
   padding: 5px;
   cursor: pointer;
 }
-</style>
 
-<style>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.4s ease;
