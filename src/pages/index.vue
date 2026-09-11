@@ -42,7 +42,7 @@ onUnmounted((): void => {
                     <p>这是一个基于Vue3的个人博客</p>
                 </div>
                 <div class="lang">
-                    <span>“</span>
+                    <span class="lang-start">"</span>
                     <span>珍惜每一天</span>
                 </div>
             </div>
@@ -55,6 +55,12 @@ onUnmounted((): void => {
                         <p class="date">{{ time.year }}-{{ time.month }}-{{ time.day }}</p>
                         <p class="times">{{ time.hour }}:{{ time.minute }}:{{ time.second }}</p>
                     </div>
+                </div>
+                <div class="quote">
+                    <p class="quote-content">
+                        “啊的房间；
+                    </p>
+                    <p class="quote-author">——shf-ns</p>
                 </div>
             </div>
         </div>
@@ -105,19 +111,31 @@ onUnmounted((): void => {
 }
 
 .lang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
     height: 50px;
-    line-height: 50px;
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.lang-start {
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .content-right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 25px;
 }
 
 .content-right .time {
@@ -144,5 +162,36 @@ onUnmounted((): void => {
     font-size: 30px;
     font-weight: bold;
     text-align: left;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 160px;
+    padding: 35px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+.quote-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    margin-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.quote-author {
+    font-size: 16px;
+    text-align: right;
 }
 </style>
