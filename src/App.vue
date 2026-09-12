@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
 import { Switch, Github, Email } from '@/components'
-import { ref, type Ref } from 'vue';
+import { provide, ref, type Ref } from 'vue';
 
 const showAlert: Ref<boolean> = ref(false)
+
+provide('showEmailAlert', () => {
+  showAlert.value = true
+})
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useComputeTime, requestTalk } from "@/tools";
 import type { Time, QuoteInfo } from "@/types";
-import { Footer } from "@/components";
-import { onMounted, onUnmounted, ref, type Ref } from "vue";
+import { Footer, Github, Email } from "@/components";
+import { inject, onMounted, onUnmounted, ref, type Ref } from "vue";
 
 const time: Ref<Time> = ref({
     year: '',
@@ -16,6 +16,8 @@ const time: Ref<Time> = ref({
 const loading: Ref<boolean> = ref(true)
 
 const timer: Ref<number> = ref(0)
+
+const showEmailAlert: () => void = inject<() => void>('showEmailAlert', () => { })
 
 const quoteInfo: Ref<QuoteInfo> = ref({
     content: '',
@@ -59,6 +61,10 @@ onUnmounted((): void => {
                     <span class="lang-start">"</span>
                     <span>珍惜每一天</span>
                 </div>
+            </div>
+            <div class="link">
+                <Github />
+                <Email @change="showEmailAlert" />
             </div>
             <div class="content-right">
                 <div class="time">
@@ -146,6 +152,12 @@ onUnmounted((): void => {
     font-size: 25px;
     font-weight: bold;
 }
+
+.link {
+    display: none;
+}
+
+
 
 .content-right {
     flex: 1;
@@ -242,8 +254,32 @@ onUnmounted((): void => {
 
     .content {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
         margin: 35px;
+    }
+
+    .content-left {
+        gap: 30px;
+    }
+
+    .content-right {
+        gap: 35px;
+    }
+
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .link .email-link,
+    .link .github-link {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .footer {
