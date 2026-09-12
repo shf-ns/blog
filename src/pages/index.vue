@@ -119,7 +119,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 300px;
     border-radius: 10px;
-    background: #fff;
+    background: #f9fafb;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -143,7 +143,7 @@ onUnmounted((): void => {
     height: 50px;
     font-size: 20px;
     font-weight: bold;
-    background: #fff;
+    background: #f9fafb;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -156,8 +156,6 @@ onUnmounted((): void => {
 .link {
     display: none;
 }
-
-
 
 .content-right {
     flex: 1;
@@ -172,7 +170,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 150px;
     padding: 35px;
-    background-color: #fff;
+    background-color: #f9fafb;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 20px;
@@ -201,7 +199,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 160px;
     padding: 35px;
-    background-color: #fff;
+    background-color: #f9fafb;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 20px;
@@ -278,7 +276,7 @@ onUnmounted((): void => {
         height: 50px;
         border-radius: 5px;
         border: none;
-        background-color: #fff;
+        background-color: #f9fafb;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 

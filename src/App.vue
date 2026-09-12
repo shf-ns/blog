@@ -63,6 +63,7 @@ provide('showEmailAlert', () => {
   width: 220px;
   height: 100%;
   padding: 20px;
+  background-color: #f9fafb;
 }
 
 .sider-avatar {
@@ -131,7 +132,7 @@ provide('showEmailAlert', () => {
 .main {
   flex: 1;
   overflow-y: auto;
-  background: #f9fafb;
+  background: #fff;
 }
 
 .alert {
