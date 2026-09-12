@@ -33,7 +33,7 @@ const showAlert: Ref<boolean> = ref(false)
           <div class="icon">
             <img src="./assets/img/project.png" alt="GitHub项目">
           </div>
-          GitHub项目
+          项目
         </RouterLink>
       </li>
     </ul>
@@ -182,6 +182,7 @@ const showAlert: Ref<boolean> = ref(false)
 
 .main {
   flex: 1;
+  overflow-y: auto;
   background: #f9fafb;
 }
 
@@ -229,5 +230,17 @@ const showAlert: Ref<boolean> = ref(false)
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sider {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sider {
+    display: none;
+  }
 }
 </style>

@@ -212,4 +212,42 @@ onUnmounted((): void => {
     font-size: 16px;
     text-align: right;
 }
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+    .home {
+        padding: 20px 90px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .home {
+        padding: 20px 100px;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 25px;
+    }
+
+    .footer {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        padding: 0px;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 40px;
+        margin: 35px;
+    }
+
+    .footer {
+        margin-top: 25px;
+    }
+}
 </style>
