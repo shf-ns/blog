@@ -248,6 +248,7 @@ onUnmounted((): void => {
 @media (max-width: 768px) {
     .home {
         padding: 0px;
+        margin-top: 100px;
     }
 
     .content {
