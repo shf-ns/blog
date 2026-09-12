@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
-import { Switch } from '@/components'
+import { Switch, Github, Email } from '@/components'
 import { ref, type Ref } from 'vue';
 
 const showAlert: Ref<boolean> = ref(false)
@@ -12,12 +12,8 @@ const showAlert: Ref<boolean> = ref(false)
       <img src="./assets/img/avatar.png" alt="头像">
     </div>
     <div class="link">
-      <a href="https://github.com/shf-ns" target="_blank" class="github-link link-item" data-tooltip="GitHub">
-        <img src="./assets/img/github.png" alt="GitHub">
-      </a>
-      <div class="email-link link-item" data-tooltip="邮箱" @click="showAlert = true">
-        <img src="./assets/img/email.png" alt="邮箱">
-      </div>
+      <Github />
+      <Email @change="showAlert = $event" />
     </div>
     <ul class="sider-menu">
       <li>
@@ -83,58 +79,6 @@ const showAlert: Ref<boolean> = ref(false)
   gap: 10px;
   margin-top: 80px;
   margin-right: auto;
-}
-
-.link-item {
-  position: relative;
-  display: block;
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.link-item::before {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 132%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  padding: 2px 5px;
-  border-radius: 3px;
-  color: white;
-  font-size: small;
-  white-space: nowrap;
-  background-color: #333;
-  /* 防止鼠标悬停在提示框上导致闪烁 */
-  pointer-events: none;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.link-item::after {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2px;
-  background-color: #333;
-  transform: rotate(45deg);
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.link-item:hover::before,
-.link-item:hover::after {
-  opacity: 1;
-}
-
-.link-item img {
-  width: 100%;
-  height: 100%;
 }
 
 .sider-menu {
