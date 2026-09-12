@@ -10,7 +10,7 @@
     margin-top: auto;
     line-height: 50px;
     text-align: center;
-    font-size: 16px;
+    font-size: small;
     color: #ccc;
 }
 </style>

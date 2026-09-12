@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useComputeTime } from "@/tools/computeTime";
-import type { Time } from "@/types/Time";
+import { useComputeTime, requestTalk } from "@/tools";
+import type { Time, QuoteInfo } from "@/types";
 import { Footer } from "@/components";
 import { onMounted, onUnmounted, ref, type Ref } from "vue";
 
@@ -17,7 +17,20 @@ const loading: Ref<boolean> = ref(true)
 
 const timer: Ref<number> = ref(0)
 
+const quoteInfo: Ref<QuoteInfo> = ref({
+    content: '',
+    author: '',
+})
+
 onMounted((): void => {
+    const handlQuoteInfo = async (): Promise<void> => {
+        const data: QuoteInfo | undefined = await requestTalk()
+        if (data) {
+            quoteInfo.value.author = data.author
+            quoteInfo.value.content = data.content
+        }
+    }
+    handlQuoteInfo()
     timer.value = setInterval((): void => {
         time.value = useComputeTime(new Date())
         if (loading.value) {
@@ -59,9 +72,9 @@ onUnmounted((): void => {
                 </div>
                 <div class="quote">
                     <p class="quote-content">
-                        “啊的房间；
+                        {{ quoteInfo.content }}
                     </p>
-                    <p class="quote-author">——shf-ns</p>
+                    <p class="quote-author">——{{ quoteInfo.author }}</p>
                 </div>
             </div>
         </div>
