@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-const emit = defineEmits(['change'])
+import { inject, type Ref } from 'vue'
 
-function sendShowAlert(): void {
-    emit('change', true)
+const isAlert: Ref<boolean> = inject('isAlert')!
+
+const handleIsAlert = () => {
+    isAlert.value = true
 }
 </script>
 
 <template>
-    <div class="email-link" data-tooltip="邮箱" @click="sendShowAlert">
+    <div class="email-link" data-tooltip="邮箱" @click="handleIsAlert">
         <img src="../assets/img/email.png" alt="邮箱">
     </div>
 </template>
