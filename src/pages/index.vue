@@ -3,7 +3,7 @@ import { useComputeTime, requestTalk } from "@/tools";
 import type { Time, QuoteInfo } from "@/types";
 import { Github, Email } from "@/components";
 import { Footer } from "@/layout";
-import { inject, onMounted, onUnmounted, ref, type Ref } from "vue";
+import { onMounted, onUnmounted, ref, type Ref } from "vue";
 
 const time: Ref<Time> = ref({
     year: '',
