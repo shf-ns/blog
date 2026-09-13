@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref, type Ref } from 'vue';
+import { Switch } from '@/components'
+
+
+const isSetting: Ref<boolean> = ref(false)
+
+const handleClickOutside = (e: MouseEvent): void => {
+    const target = e.target as HTMLElement;
+    if (isSetting.value && !target.closest('.setting')) {
+        isSetting.value = false;
+    }
+}
+
+onMounted(() => {
+    document.addEventListener('click', handleClickOutside);
+})
+
+onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside);
+})
+</script>
+
 <template>
     <div class="header">
         <div class="header-avatar">
@@ -104,5 +127,15 @@
     height: 10px;
     background-color: var(--bg-primary-color);
     transform: rotate(45deg);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

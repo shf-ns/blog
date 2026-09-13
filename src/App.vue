@@ -8,22 +8,7 @@ const isAlert: Ref<boolean> = ref(false)
 
 provide('isAlert', isAlert)
 
-const isSetting: Ref<boolean> = ref(false)
 
-const handleClickOutside = (e: MouseEvent): void => {
-  const target = e.target as HTMLElement;
-  if (isSetting.value && !target.closest('.setting')) {
-    isSetting.value = false;
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside);
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside);
-})
 
 </script>
 
