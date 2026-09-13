@@ -1,7 +1,19 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const isActive = ref(false)
+
+const toggleTheme = () => {
+    isActive.value = !isActive.value
+}
+</script>
+
 <template>
-    <label class="switch" for="switch">
-        <input id="switch" type="checkbox" style="display: none;" />
-    </label>
+    <div class="switch" @click="toggleTheme">
+        <div class="switch-btn" :class="{ 'active': isActive }">
+            {{ isActive ? '深' : '浅' }}
+        </div>
+    </div>
 </template>
 <style scoped>
 .switch {
@@ -11,10 +23,11 @@
     border-radius: 15px;
     background-color: #ecedee;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none
 }
 
-.switch::before {
-    content: '浅';
+.switch-btn {
     display: block;
     width: 20px;
     height: 20px;
@@ -26,8 +39,7 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.switch:has(input:checked)::before {
-    content: '深';
+.switch-btn.active {
     transform: translate(25px, 5px);
 }
 </style>
