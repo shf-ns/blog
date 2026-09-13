@@ -86,10 +86,12 @@ provide('showEmailAlert', () => {
         </div>
       </li>
     </ul>
-    <div class="setting" v-show="isSetting">
-      <p>主题:</p>
-      <Switch />
-    </div>
+    <Transition name="fade">
+      <div class="setting" v-show="isSetting">
+        <p>主题:</p>
+        <Switch />
+      </div>
+    </Transition>
   </div>
   <div class="main">
     <router-view></router-view>
@@ -293,7 +295,7 @@ provide('showEmailAlert', () => {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,
