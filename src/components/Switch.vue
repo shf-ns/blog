@@ -23,7 +23,6 @@ const toggleTheme = () => {
     border-radius: 15px;
     background-color: #ecedee;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
     user-select: none
 }
 

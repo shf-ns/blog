@@ -3,10 +3,12 @@ import { RouterView, RouterLink } from 'vue-router'
 import { Switch, Github, Email } from '@/components'
 import { provide, ref, type Ref } from 'vue';
 
-const showAlert: Ref<boolean> = ref(false)
+const isAlert: Ref<boolean> = ref(false)
+
+const isSetting: Ref<boolean> = ref(false)
 
 provide('showEmailAlert', () => {
-  showAlert.value = true
+  isAlert.value = true
 })
 </script>
 
@@ -17,7 +19,7 @@ provide('showEmailAlert', () => {
     </div>
     <div class="link">
       <Github />
-      <Email @change="showAlert = $event" />
+      <Email @change="isAlert = $event" />
     </div>
     <ul class="sider-menu">
       <li>
@@ -62,14 +64,14 @@ provide('showEmailAlert', () => {
         </RouterLink>
       </li>
       <li>
-        <div class="header-menu-item">
+        <div class="header-menu-item" @click="isSetting = !isSetting">
           <div class="img">
             <img src="./assets/img/setting.png" alt="设置">
           </div>
         </div>
       </li>
     </ul>
-    <div class="setting">
+    <div class="setting" v-show="isSetting">
       <p>主题:</p>
       <Switch />
     </div>
@@ -78,9 +80,9 @@ provide('showEmailAlert', () => {
     <router-view></router-view>
   </div>
   <Transition name="fade">
-    <div class="alert" v-show="showAlert" @click="showAlert = false">
+    <div class="alert" v-show="isAlert" @click="isAlert = false">
       <div class="alert-content" @click.stop>
-        <span class="close-btn" @click="showAlert = false">x</span>
+        <span class="close-btn" @click="isAlert = false">x</span>
         <p class="alert-text">邮箱：3104467468@qq.com</p>
       </div>
     </div>
@@ -138,6 +140,10 @@ provide('showEmailAlert', () => {
   align-items: center;
   gap: 20px;
   margin-top: 20px;
+}
+
+.header-menu-item {
+  cursor: pointer;
 }
 
 .header-menu-item .img {
