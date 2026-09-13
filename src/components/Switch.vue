@@ -5,6 +5,7 @@
 </template>
 <style scoped>
 .switch {
+    display: block;
     width: 50px;
     height: 30px;
     border-radius: 15px;

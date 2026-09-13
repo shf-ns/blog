@@ -69,6 +69,10 @@ provide('showEmailAlert', () => {
         </div>
       </li>
     </ul>
+    <div class="setting">
+      <p>主题:</p>
+      <Switch />
+    </div>
   </div>
   <div class="main">
     <router-view></router-view>
@@ -91,7 +95,7 @@ provide('showEmailAlert', () => {
   width: 220px;
   height: 100%;
   padding: 20px;
-  background-color: #f9fafb;
+  background-color: var(--bg-secondary-color);
 }
 
 .sider-avatar {
@@ -107,13 +111,14 @@ provide('showEmailAlert', () => {
 }
 
 .header {
+  position: relative;
   position: fixed;
   top: 0;
   z-index: 1000;
   display: none;
   width: 100%;
   height: 80px;
-  background-color: #f9fafb;
+  background-color: var(--bg-secondary-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -128,7 +133,7 @@ provide('showEmailAlert', () => {
   height: 100%;
 }
 
-.menu {
+.header .menu {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -144,6 +149,33 @@ provide('showEmailAlert', () => {
   width: 100%;
   height: 100%;
 }
+
+.header .setting {
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 120px;
+  height: 50px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-primary-color);
+}
+
+.header .setting::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 19px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--bg-primary-color);
+  transform: rotate(45deg);
+}
+
 
 .link {
   display: flex;
@@ -199,7 +231,7 @@ provide('showEmailAlert', () => {
 .main {
   flex: 1;
   overflow-y: auto;
-  background: #fff;
+  background: var(--bg-primary-color);
 }
 
 .alert {

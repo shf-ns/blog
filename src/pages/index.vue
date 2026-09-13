@@ -119,7 +119,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 300px;
     border-radius: 10px;
-    background: #f9fafb;
+    background: var(--bg-secondary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -143,7 +143,7 @@ onUnmounted((): void => {
     height: 50px;
     font-size: 20px;
     font-weight: bold;
-    background: #f9fafb;
+    background: var(--bg-secondary-color);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -170,7 +170,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 150px;
     padding: 35px;
-    background-color: #f9fafb;
+    background-color: var(--bg-secondary-color);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 20px;
@@ -199,7 +199,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 160px;
     padding: 35px;
-    background-color: #f9fafb;
+    background-color: var(--bg-secondary-color);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 20px;
@@ -248,7 +248,7 @@ onUnmounted((): void => {
 @media (max-width: 768px) {
     .home {
         padding: 0px;
-        margin-top: 100px;
+        margin-top: 90px;
     }
 
     .content {
@@ -277,7 +277,7 @@ onUnmounted((): void => {
         height: 50px;
         border-radius: 5px;
         border: none;
-        background-color: #f9fafb;
+        background-color: var(--bg-secondary-color);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
