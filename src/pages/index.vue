@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { useComputeTime, requestTalk } from "@/tools";
 import type { Time, QuoteInfo } from "@/types";
-import { Footer, Github, Email } from "@/components";
+import { Github, Email } from "@/components";
+import { Footer } from "@/layout";
 import { inject, onMounted, onUnmounted, ref, type Ref } from "vue";
 
 const time: Ref<Time> = ref({
@@ -16,8 +17,6 @@ const time: Ref<Time> = ref({
 const loading: Ref<boolean> = ref(true)
 
 const timer: Ref<number> = ref(0)
-
-const showEmailAlert: () => void = inject<() => void>('showEmailAlert', () => { })
 
 const quoteInfo: Ref<QuoteInfo> = ref({
     content: '',
@@ -64,7 +63,7 @@ onUnmounted((): void => {
             </div>
             <div class="link">
                 <Github />
-                <Email @change="showEmailAlert" />
+                <Email />
             </div>
             <div class="content-right">
                 <div class="time">
