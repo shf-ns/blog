@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 
-const isActive = ref(false)
+const isActive: Ref<boolean> = ref(false)
 
-const toggleTheme = () => {
+const toggleTheme = (): void => {
     isActive.value = !isActive.value
 }
 </script>

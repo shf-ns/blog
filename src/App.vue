@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { RouterView, RouterLink } from 'vue-router'
+import { RouterView } from 'vue-router'
 import { Alert } from '@/components'
 import { Sider, Header } from '@/layout'
-import { provide, ref, type Ref, onMounted, onUnmounted } from 'vue';
+import { provide, ref, type Ref } from 'vue';
 
 const isAlert: Ref<boolean> = ref(false)
 
 provide('isAlert', isAlert)
-
-
 
 </script>
 
