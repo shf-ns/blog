@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
 import { Switch, Github, Email } from '@/components'
-import { provide, ref, type Ref } from 'vue';
+import { provide, ref, type Ref, onMounted, onUnmounted } from 'vue';
 
 const isAlert: Ref<boolean> = ref(false)
 
 const isSetting: Ref<boolean> = ref(false)
+
+const handleClickOutside = (e: MouseEvent): void => {
+  const target = e.target as HTMLElement;
+  if (isSetting.value && !target.closest('.setting')) {
+    isSetting.value = false;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+})
 
 provide('showEmailAlert', () => {
   isAlert.value = true
@@ -64,7 +79,7 @@ provide('showEmailAlert', () => {
         </RouterLink>
       </li>
       <li>
-        <div class="header-menu-item" @click="isSetting = !isSetting">
+        <div class="header-menu-item" @click.stop="isSetting = !isSetting">
           <div class="img">
             <img src="./assets/img/setting.png" alt="设置">
           </div>
