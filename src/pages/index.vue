@@ -119,7 +119,7 @@ onUnmounted((): void => {
     height: 300px;
     border-radius: 10px;
     background: var(--bg-secondary-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .content-left .avatar {
@@ -144,7 +144,7 @@ onUnmounted((): void => {
     font-weight: bold;
     background: var(--bg-secondary-color);
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .lang-start {
@@ -171,7 +171,7 @@ onUnmounted((): void => {
     padding: 35px;
     background-color: var(--bg-secondary-color);
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     font-size: 20px;
     text-align: left;
 }
@@ -200,7 +200,7 @@ onUnmounted((): void => {
     padding: 35px;
     background-color: var(--bg-secondary-color);
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     font-size: 20px;
 }
 
@@ -277,7 +277,7 @@ onUnmounted((): void => {
         border-radius: 5px;
         border: none;
         background-color: var(--bg-secondary-color);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--box-shadow);
     }
 
     .footer {

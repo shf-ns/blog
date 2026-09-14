@@ -1,6 +1,7 @@
 :root {
-    --bg-primary-color: #fff;
-    --bg-secondary-color: #f9fafb;
+    --bg-primary-color: #f9fafb;
+    --bg-secondary-color: #fff;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 * {
