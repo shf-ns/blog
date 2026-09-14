@@ -66,4 +66,14 @@ const handleIsAlert = () => {
     width: 100%;
     height: 100%;
 }
+
+@media(max-width: 768px) {
+    .email-link::before {
+        display: none;
+    }
+
+    .email-link::after {
+        display: none;
+    }
+}
 </style>

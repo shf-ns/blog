@@ -56,4 +56,14 @@
     width: 100%;
     height: 100%;
 }
+
+@media(max-width: 768px) {
+    .github-link::before {
+        display: none;
+    }
+
+    .github-link::after {
+        display: none;
+    }
+}
 </style>
