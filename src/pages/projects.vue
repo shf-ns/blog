@@ -71,6 +71,7 @@ import { Footer } from '@/layout'
 .projects {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: flex-start;
     width: 100%;
     height: 100%;
