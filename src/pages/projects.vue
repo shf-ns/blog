@@ -1,65 +1,36 @@
 <script lang="ts" setup>
 import { Footer } from '@/layout'
+import { gitHubRepo } from '@/tools';
+import type { GitHubRepo } from '@/types';
+import { onMounted, ref, type Ref } from 'vue';
+
+const repos: Ref<GitHubRepo[]> = ref([])
+
+const load = ref(true);
+
+onMounted(async (): Promise<void> => {
+    repos.value = await gitHubRepo();
+    load.value = false;
+})
+
 </script>
 
 <template>
     <div class="projects">
-        <ul class="projects-list">
-            <li class="item">
-                <a href="#" class="title">learn-Vue3</a>
-                <p class="description">学习 Vue3 的项目</p>
+        <div v-if="load">加载中...</div>
+        <ul v-else class="projects-list">
+            <li class="item" v-for="(repo, index) in repos" :key="index">
+                <a :href="repo.html_url" target="_blank" class="title">{{ repo.name }}</a>
+                <p class="description">{{ repo.description }}</p>
                 <div class="info">
-                    <span class="lang">Vue3</span>
+                    <span class="lang">{{ repo.language }}</span>
                     <div class="stars">
                         <div class="img">
                             <img src="../assets/img/start.png" alt="星星">
                         </div>
-                        <span>3</span>
+                        <span>{{ repo.stargazers_count }}</span>
                     </div>
-                    <span class="updated">updated：2023-08-01</span>
-                </div>
-            </li>
-            <li class="item">
-                <a href="#" class="title">learn-Vue3</a>
-                <p class="description">学习 Vue3 的项目</p>
-                <div class="info">
-                    <span class="lang">Vue3</span>
-                    <div class="stars">
-                        <div class="img">
-                            <img src="../assets/img/start.png" alt="星星">
-                        </div>
-                        <span>3</span>
-                    </div>
-                    <span class="updated">updated：2023-08-01</span>
-                </div>
-            </li>
-            <li class="item">
-                <a href="#" class="title">learn-Vue3</a>
-                <p class="description">学习 Vue3 的项目</p>
-                <div class="info">
-                    <span class="lang">Vue3</span>
-                    <div class="stars">
-                        <div class="img">
-                            <img src="../assets/img/start.png" alt="星星">
-                        </div>
-                        <span>3</span>
-                    </div>
-                    <span class="updated">updated：2023-08-01</span>
-                </div>
-            </li>
-            <li class="item">
-                <a href="#" class="title">learn-Vue3</a>
-                <p class="description">学习 Vue3 的项目学习 Vue3 的项目学习 Vue3 的项目学习 Vue3 的项目学习 Vue3 的项目学习 Vue3 的项目学习 Vue3 的项目学习
-                    Vue3 的项目</p>
-                <div class="info">
-                    <span class="lang">Vue3</span>
-                    <div class="stars">
-                        <div class="img">
-                            <img src="../assets/img/start.png" alt="星星">
-                        </div>
-                        <span>3</span>
-                    </div>
-                    <span class="updated">updated：2023-08-01</span>
+                    <span class="updated">updated：{{ repo.updated_at }}</span>
                 </div>
             </li>
         </ul>
@@ -72,10 +43,10 @@ import { Footer } from '@/layout'
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     height: 100%;
-    padding: 0 200px;
+    padding: 0 180px;
 }
 
 .projects-list {
@@ -90,7 +61,7 @@ import { Footer } from '@/layout'
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    padding: 20px;
+    padding: 25px;
     background-color: var(--bg-secondary-color);
     box-shadow: var(--box-shadow);
     border-radius: 5px;
@@ -124,6 +95,7 @@ import { Footer } from '@/layout'
     gap: 15px;
     font-size: 12px;
     color: #59636e;
+    white-space: nowrap;
 }
 
 .projects-list .item .info .stars {

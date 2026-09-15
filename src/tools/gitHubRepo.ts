@@ -1,6 +1,6 @@
 import type { GitHubRepo } from "@/types";
 
-export async function gitHubRepo(): Promise<GitHubRepo[] | undefined> {
+export async function gitHubRepo(): Promise<GitHubRepo[]> {
   let repos: GitHubRepo[] = [];
 
   try {
@@ -15,5 +15,6 @@ export async function gitHubRepo(): Promise<GitHubRepo[] | undefined> {
     return repos;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
