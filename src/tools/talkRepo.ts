@@ -1,6 +1,6 @@
-import type { QuoteInfo } from "@/types";
+import type { QuoteRepo } from "@/types";
 
-export async function requestTalk(): Promise<QuoteInfo | undefined> {
+export async function talkRepo(): Promise<QuoteRepo | undefined> {
   try {
     const uapisUrl: string =
       "https://uapis.cn/api/v1/saying/random?mode=daily&source=sentences bundle";
@@ -12,8 +12,8 @@ export async function requestTalk(): Promise<QuoteInfo | undefined> {
     });
     const data: any = await response.json();
     const { content, author } = data.item;
-    const quoteInfo: QuoteInfo = { content, author };
-    return quoteInfo;
+    const quoteRepo: QuoteRepo = { content, author };
+    return quoteRepo;
   } catch (err) {
     console.error(err);
   }

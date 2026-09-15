@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useComputeTime, requestTalk } from "@/tools";
-import type { Time, QuoteInfo } from "@/types";
+import { useComputeTime, talkRepo } from "@/tools";
+import type { Time, QuoteRepo } from "@/types";
 import { Github, Email } from "@/components";
 import { Footer } from "@/layout";
 import { onMounted, onUnmounted, ref, type Ref } from "vue";
@@ -18,14 +18,14 @@ const loading: Ref<boolean> = ref(true)
 
 const timer: Ref<number> = ref(0)
 
-const quoteInfo: Ref<QuoteInfo> = ref({
+const quoteInfo: Ref<QuoteRepo> = ref({
     content: '',
     author: '',
 })
 
 onMounted((): void => {
     const handlQuoteInfo = async (): Promise<void> => {
-        const data: QuoteInfo | undefined = await requestTalk()
+        const data: QuoteRepo | undefined = await talkRepo()
         if (data) {
             quoteInfo.value.author = data.author
             quoteInfo.value.content = data.content

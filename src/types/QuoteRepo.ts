@@ -1,4 +1,4 @@
-export interface QuoteInfo {
+export interface QuoteRepo {
   content: string;
   author: string;
 }
