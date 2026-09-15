@@ -17,7 +17,7 @@ onMounted(async (): Promise<void> => {
 
 <template>
     <div class="projects">
-        <div v-if="load">加载中...</div>
+        <h1 v-if="load">加载中...</h1>
         <ul v-else class="projects-list">
             <li class="item" v-for="(repo, index) in repos" :key="index">
                 <a :href="repo.html_url" target="_blank" class="title">{{ repo.name }}</a>
@@ -47,6 +47,11 @@ onMounted(async (): Promise<void> => {
     width: 100%;
     height: 100%;
     padding: 0 180px;
+}
+
+.load {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .projects-list {
