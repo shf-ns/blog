@@ -47,11 +47,13 @@ onMounted(async (): Promise<void> => {
     width: 100%;
     height: 100%;
     padding: 0 180px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .load {
     font-size: 20px;
     font-weight: bold;
+    color: var(--text-secondary-color);
 }
 
 .projects-list {
@@ -85,7 +87,7 @@ onMounted(async (): Promise<void> => {
 
 .projects-list .item .description {
     font-size: 14px;
-    color: #59636e;
+    color: var(--text-secondary-color);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -99,7 +101,7 @@ onMounted(async (): Promise<void> => {
     display: flex;
     gap: 15px;
     font-size: 12px;
-    color: #59636e;
+    color: var(--text-secondary-color);
     white-space: nowrap;
 }
 

@@ -45,6 +45,7 @@ import { Switch, Github, Email } from '@/components'
     height: 100%;
     padding: 20px;
     background-color: var(--bg-secondary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sider-avatar {
@@ -91,6 +92,7 @@ import { Switch, Github, Email } from '@/components'
     gap: 20px;
     width: 100%;
     height: 100%;
+    color: var(--text-primary-color);
 }
 
 .sider-menu .icon {
@@ -108,5 +110,6 @@ import { Switch, Github, Email } from '@/components'
     align-items: center;
     gap: 5px;
     margin: auto 0 15px auto;
+    color: var(--text-primary-color);
 }
 </style>

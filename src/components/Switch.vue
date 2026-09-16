@@ -6,13 +6,22 @@ const themeStore = useThemeStore()
 
 const isActive: Ref<boolean> = ref(false)
 
+let transitionTimer: number | null = null
+
+
 const toggleTheme = (): void => {
+
     isActive.value = !isActive.value
     if (isActive.value) {
         themeStore.saveTheme('dark')
     } else {
         themeStore.saveTheme('light')
     }
+
+    transitionTimer = window.setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition')
+        transitionTimer = null
+    }, 300)
 }
 
 onMounted(() => {
@@ -48,7 +57,7 @@ watch(isActive, (newTheme: boolean) => {
     width: 50px;
     height: 30px;
     border-radius: 15px;
-    background-color: #ecedee;
+    background-color: var(--switch-bg-color);
     cursor: pointer;
     user-select: none
 }
@@ -59,6 +68,7 @@ watch(isActive, (newTheme: boolean) => {
     height: 20px;
     border-radius: 50%;
     background-color: #fff;
+    color: black;
     text-align: center;
     font-size: small;
     transform: translate(5px, 5px);

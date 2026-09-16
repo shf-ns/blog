@@ -27,7 +27,7 @@
     color: white;
     font-size: small;
     white-space: nowrap;
-    background-color: #333;
+    background-color: black;
     /* 防止鼠标悬停在提示框上导致闪烁 */
     pointer-events: none;
     opacity: 0;

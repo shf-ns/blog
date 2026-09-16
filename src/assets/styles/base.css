@@ -2,6 +2,20 @@
     --bg-primary-color: #f9fafb;
     --bg-secondary-color: #fff;
     --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --link-bg-color: #333;
+    --switch-bg-color: #ecedee;
+    --text-primary-color: #000;
+    --text-secondary-color: #59636e;
+}
+
+:root.dark {
+    --bg-primary-color: #222;
+    --bg-secondary-color: #333;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --link-bg-color: #444;
+    --switch-bg-color: #444;
+    --text-primary-color: #fff;
+    --text-secondary-color: #ccc;
 }
 
 * {

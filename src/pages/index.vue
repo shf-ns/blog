@@ -94,6 +94,8 @@ onUnmounted((): void => {
     width: 100%;
     height: 100%;
     padding: 20px 200px;
+    color: var(--text-primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .content {
@@ -118,7 +120,7 @@ onUnmounted((): void => {
     width: 100%;
     height: 300px;
     border-radius: 10px;
-    background: var(--bg-secondary-color);
+    background-color: var(--bg-secondary-color);
     box-shadow: var(--box-shadow);
 }
 
@@ -142,7 +144,7 @@ onUnmounted((): void => {
     height: 50px;
     font-size: 20px;
     font-weight: bold;
-    background: var(--bg-secondary-color);
+    background-color: var(--bg-secondary-color);
     border-radius: 5px;
     box-shadow: var(--box-shadow);
 }

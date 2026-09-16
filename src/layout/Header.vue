@@ -69,6 +69,7 @@ onUnmounted(() => {
     height: 80px;
     background-color: var(--bg-secondary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header-avatar {
@@ -115,7 +116,8 @@ onUnmounted(() => {
     height: 50px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: var(--bg-primary-color);
+    background-color: var(--bg-secondary-color);
+    color: var(--text-primary-color);
 }
 
 .header .setting::before {
