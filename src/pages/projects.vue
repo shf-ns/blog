@@ -63,7 +63,7 @@ onMounted(async (): Promise<void> => {
 
 .projects-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 400px);
     grid-gap: 30px;
     margin-top: 70px;
 }
