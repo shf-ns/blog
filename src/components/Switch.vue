@@ -1,11 +1,38 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue'
+import { onMounted, ref, watch, type Ref } from 'vue'
+import { useThemeStore } from '@/stores/theme'
+
+const themeStore = useThemeStore()
 
 const isActive: Ref<boolean> = ref(false)
 
 const toggleTheme = (): void => {
     isActive.value = !isActive.value
+    if (isActive.value) {
+        themeStore.saveTheme('dark')
+    } else {
+        themeStore.saveTheme('light')
+    }
 }
+
+onMounted(() => {
+    const theme = themeStore.getTheme()
+    if (theme === 'dark') {
+        isActive.value = true
+        themeStore.theme = 'dark'
+    } else {
+        isActive.value = false
+        themeStore.theme = 'light'
+    }
+})
+
+watch(isActive, (newTheme: boolean) => {
+    if (newTheme) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+}, { immediate: true })
 </script>
 
 <template>

@@ -6,12 +6,12 @@ export const useThemeStore = defineStore("theme", () => {
   const theme = ref<Theme>("light");
 
   function saveTheme(themeValue: Theme) {
-    localStorage.setItem("theme", themeValue);
+    localStorage.setItem("Theme", themeValue);
     theme.value = themeValue;
   }
 
   function getTheme(): Theme {
-    return (localStorage.getItem("theme") as Theme) || "light";
+    return (localStorage.getItem("Theme") as Theme) || "light";
   }
 
   return { theme, saveTheme, getTheme };
