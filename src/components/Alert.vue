@@ -32,9 +32,10 @@ const isAlert: Ref<boolean> = inject('isAlert')!
     width: 300px;
     height: 100px;
     padding: 10px;
-    background-color: #fff;
+    background-color: var(--bg-secondary-color);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-primary-color);
 }
 
 .alert-text {
