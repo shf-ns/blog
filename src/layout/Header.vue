@@ -127,7 +127,7 @@ onUnmounted(() => {
     right: 19px;
     width: 10px;
     height: 10px;
-    background-color: var(--bg-primary-color);
+    background-color: var(--bg-secondary-color);
     transform: rotate(45deg);
 }
 
