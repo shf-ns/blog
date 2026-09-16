@@ -1,8 +1,13 @@
 <script lang="ts" setup>
 import { Footer } from '@/layout'
-import { gitHubRepo } from '@/tools';
+import { gitHubRepo, useComputeTime } from '@/tools';
 import type { GitHubRepo } from '@/types';
 import { onMounted, ref, type Ref } from 'vue';
+
+function formatDate(dateStr: string): string {
+    const { year, month, day } = useComputeTime(new Date(dateStr));
+    return `${year}-${month}-${day}`;
+}
 
 const repos: Ref<GitHubRepo[]> = ref([])
 
@@ -30,7 +35,7 @@ onMounted(async (): Promise<void> => {
                         </div>
                         <span>{{ repo.stargazers_count }}</span>
                     </div>
-                    <span class="updated">updated：{{ repo.updated_at }}</span>
+                    <span class="updated">updated：{{ formatDate(repo.updated_at) }}</span>
                 </div>
             </li>
         </ul>
